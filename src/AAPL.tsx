@@ -289,7 +289,7 @@ function AAPL() {
     // render filter box entries >> table
     return (
         <div className="container mx-auto">
-            <div className="mb-4 flex flex-wrap gap-4 justify-center">
+            <div className="mb-4 sticky flex flex-wrap gap-4 justify-center">
                 <input
                     type="number"
                     placeholder="Start Year (YYYY)"
@@ -345,73 +345,80 @@ function AAPL() {
                     className="p-2 border rounded"
                 />
             </div>
-
-            <table className="table-auto w-full border-collapse border border-gray-200">
-                <thead>
-                    <tr>
-                        <th
-                            onClick={() => handleSort("date")}
-                            className={`border px-4 py-2 cursor-pointer ${
-                                sort.key === "date" ? "font-bold" : ""
-                            }`}
-                        >
-                            Date{" "}
-                            {sort.key === "date"
-                                ? sort.order === "asc"
-                                    ? "↑"
-                                    : "↓"
-                                : "↑↓"}
-                        </th>
-                        <th
-                            onClick={() => handleSort("revenue")}
-                            className={`border px-4 py-2 cursor-pointer ${
-                                sort.key === "revenue" ? "font-bold" : ""
-                            }`}
-                        >
-                            Revenue{" "}
-                            {sort.key === "revenue"
-                                ? sort.order === "asc"
-                                    ? "↑"
-                                    : "↓"
-                                : "↑↓"}
-                        </th>
-                        <th
-                            onClick={() => handleSort("netIncome")}
-                            className={`border px-4 py-2 cursor-pointer ${
-                                sort.key === "netIncome" ? "font-bold" : ""
-                            }`}
-                        >
-                            Net Income{" "}
-                            {sort.key === "netIncome"
-                                ? sort.order === "asc"
-                                    ? "↑"
-                                    : "↓"
-                                : "↑↓"}
-                        </th>
-                        <th className="border px-4 py-2">Gross Profit</th>
-                        <th className="border px-4 py-2">EPS</th>
-                        <th className="border px-4 py-2">Operating Income</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {sortedData.map((item) => (
-                        <tr key={item.date} className="text-center">
-                            <td className="border px-4 py-2">{item.date}</td>
-                            <td className="border px-4 py-2">{item.revenue}</td>
-                            <td className="border px-4 py-2">
-                                {item.netIncome}
-                            </td>
-                            <td className="border px-4 py-2">
-                                {item.grossProfit}
-                            </td>
-                            <td className="border px-4 py-2">{item.eps}</td>
-                            <td className="border px-4 py-2">
-                                {item.operatingIncome}
-                            </td>
+            <div className="overflow-x-auto">
+                <table className="table-auto w-full border-collapse border border-gray-200">
+                    <thead>
+                        <tr>
+                            <th
+                                onClick={() => handleSort("date")}
+                                className={`border px-4 py-2 cursor-pointer ${
+                                    sort.key === "date" ? "font-bold" : ""
+                                }`}
+                            >
+                                Date{" "}
+                                {sort.key === "date"
+                                    ? sort.order === "asc"
+                                        ? "↑"
+                                        : "↓"
+                                    : "↑↓"}
+                            </th>
+                            <th
+                                onClick={() => handleSort("revenue")}
+                                className={`border px-4 py-2 cursor-pointer ${
+                                    sort.key === "revenue" ? "font-bold" : ""
+                                }`}
+                            >
+                                Revenue{" "}
+                                {sort.key === "revenue"
+                                    ? sort.order === "asc"
+                                        ? "↑"
+                                        : "↓"
+                                    : "↑↓"}
+                            </th>
+                            <th
+                                onClick={() => handleSort("netIncome")}
+                                className={`border px-4 py-2 cursor-pointer ${
+                                    sort.key === "netIncome" ? "font-bold" : ""
+                                }`}
+                            >
+                                Net Income{" "}
+                                {sort.key === "netIncome"
+                                    ? sort.order === "asc"
+                                        ? "↑"
+                                        : "↓"
+                                    : "↑↓"}
+                            </th>
+                            <th className="border px-4 py-2">Gross Profit</th>
+                            <th className="border px-4 py-2">EPS</th>
+                            <th className="border px-4 py-2">
+                                Operating Income
+                            </th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {sortedData.map((item) => (
+                            <tr key={item.date} className="text-center">
+                                <td className="border px-4 py-2">
+                                    {item.date}
+                                </td>
+                                <td className="border px-4 py-2">
+                                    {item.revenue}
+                                </td>
+                                <td className="border px-4 py-2">
+                                    {item.netIncome}
+                                </td>
+                                <td className="border px-4 py-2">
+                                    {item.grossProfit}
+                                </td>
+                                <td className="border px-4 py-2">{item.eps}</td>
+                                <td className="border px-4 py-2">
+                                    {item.operatingIncome}
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 }
