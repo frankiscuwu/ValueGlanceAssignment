@@ -16,7 +16,7 @@ function AAPL() {
         maxNetIncome: "",
     });
 
-    const fake = [
+    /* const fake = [
         {
             date: "2024-09-28",
             symbol: "AAPL",
@@ -222,10 +222,10 @@ function AAPL() {
             finalLink:
                 "https://www.sec.gov/Archives/edgar/data/320193/000032019320000096/aapl-20200926.htm",
         },
-    ];
+    ]; */
 
     // GET
-    /* useEffect(() => {
+    useEffect(() => {
         axios
             .get(
                 "https://financialmodelingprep.com/api/v3/income-statement/AAPL?period=annual&apikey=ye7AXTZFVYOzdoeIBRwK7W2j7XIx5kX3"
@@ -237,11 +237,11 @@ function AAPL() {
             .catch((error) => {
                 return <p>API error</p>;
             });
-    }, []); */
-    useEffect(() => {
+    }, []); 
+    /* useEffect(() => {
         setData(fake);
         setLoading(false);
-    }, []);
+    }, []); */
 
     // loading screen
     if (loading) return <p>awaiting API response</p>;
